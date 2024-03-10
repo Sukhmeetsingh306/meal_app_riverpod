@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:latest_meal_app_riverpod/model/dummy_model.dart';
+import 'package:latest_meal_app_riverpod/widget/category_grid_item_widget.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -12,13 +14,17 @@ class CategoryScreen extends StatelessWidget {
         ),
       ),
       body: GridView(
+        padding: const EdgeInsets.all(24),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 1.5,
           crossAxisSpacing: 20,
-          mainAxisExtent: 20,
+          mainAxisSpacing: 20,
         ),
         children: [
+          //availableCategories.map((category) => CategoryGridItemWidget(category: category)).toList(); // cam also written in this way
+          for (final category in availableCategories)
+            CategoryGridItemWidget(category: category)
         ],
       ),
     );
