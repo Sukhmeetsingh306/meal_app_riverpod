@@ -4,9 +4,15 @@ import 'package:latest_meal_app_riverpod/widget/meal_item_trait_widget.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealsItemWidget extends StatelessWidget {
-  const MealsItemWidget({super.key, required this.meal});
+  const MealsItemWidget({
+    super.key,
+    required this.meal,
+    required this.onSelectedMeal,
+  });
 
   final MealModel meal;
+
+  final void Function(MealModel meal) onSelectedMeal;
 
   String get complexityText {
     return meal.complexity.name[0].toUpperCase() +
@@ -30,7 +36,9 @@ class MealsItemWidget extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       elevation: 2,
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          onSelectedMeal(meal);
+        },
         child: Stack(
           children: [
             FadeInImage(
