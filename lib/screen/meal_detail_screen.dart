@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:latest_meal_app_riverpod/model/meals_model.dart';
 
 class MealDetailScreen extends StatelessWidget {
@@ -14,6 +13,14 @@ class MealDetailScreen extends StatelessWidget {
         title: Text(
           meal.title,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.star,
+            ),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
