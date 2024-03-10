@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:latest_meal_app_riverpod/model/dummy_model.dart';
 import 'package:latest_meal_app_riverpod/screen/categories_screen.dart';
+import 'package:latest_meal_app_riverpod/screen/meals_screen.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -24,7 +26,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const CategoryScreen(),
+      home: MealsScreen(
+        title: 's ',
+        meals: dummyMealModels,
+      ),
     );
   }
 }
