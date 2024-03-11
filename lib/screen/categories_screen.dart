@@ -4,9 +4,12 @@ import 'package:latest_meal_app_riverpod/screen/meals_screen.dart';
 import 'package:latest_meal_app_riverpod/widget/category_grid_item_widget.dart';
 
 import '../model/category_model.dart';
+import '../model/meals_model.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+  const CategoryScreen({super.key, required this.onToggleFav});
+
+  final void Function(MealModel meal) onToggleFav;
 
   void _selectCategory(BuildContext context, CategoryModel category) {
     final filteredMeals = dummyMealModels
@@ -22,6 +25,7 @@ class CategoryScreen extends StatelessWidget {
         builder: (context) => MealsScreen(
           title: category.title,
           meals: filteredMeals,
+          onToggleFav: onToggleFav,
         ),
       ),
     );
