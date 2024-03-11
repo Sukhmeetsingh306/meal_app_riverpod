@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latest_meal_app_riverpod/screen/categories_screen.dart';
 import 'package:latest_meal_app_riverpod/screen/meals_screen.dart';
+import 'package:latest_meal_app_riverpod/widget/drawer_widget.dart';
 
 import '../model/meals_model.dart';
 
@@ -19,8 +20,10 @@ class _TabScreenState extends State<TabScreen> {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
-          message,
+        content: Center(
+          child: Text(
+            message,
+          ),
         ),
       ),
     );
@@ -67,6 +70,7 @@ class _TabScreenState extends State<TabScreen> {
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
+      drawer: const MainDrawerWidget(),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         items: const [
