@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:latest_meal_app_riverpod/screen/categories_screen.dart';
-import 'package:latest_meal_app_riverpod/screen/filter_sreen.dart';
+import 'package:latest_meal_app_riverpod/screen/filter_screen.dart';
 import 'package:latest_meal_app_riverpod/screen/meals_screen.dart';
 import 'package:latest_meal_app_riverpod/widget/drawer_widget.dart';
 
@@ -53,14 +53,14 @@ class _TabScreenState extends State<TabScreen> {
   }
 
   void _selectScreen(String identifier) {
+    Navigator.of(context).pop();
+
     if (identifier == 'filters') {
-      Navigator.of(context).push(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const FilterScreen(),
         ),
       );
-    } else {
-      Navigator.of(context).pop();
     }
   }
 
