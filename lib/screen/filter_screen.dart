@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:latest_meal_app_riverpod/screen/tabs_screen.dart';
-import 'package:latest_meal_app_riverpod/widget/drawer_widget.dart';
+
 
 enum Filter {
   glutenFree,
   vegetarian,
   lactoseFree,
-  vegan,  
+  vegan,
 }
 
 class FilterScreen extends StatefulWidget {
@@ -30,18 +29,18 @@ class _FilterScreenState extends State<FilterScreen> {
           'Yours Filters',
         ),
       ),
-      drawer: MainDrawerWidget(onSelectScreen: (identifier) {
-        Navigator.of(context).pop();
-        if (identifier == 'meals') {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return const TabScreen();
-              },
-            ),
-          );
-        }
-      }),
+      // drawer: MainDrawerWidget(onSelectScreen: (identifier) {
+      //   Navigator.of(context).pop();
+      //   if (identifier == 'meals') {
+      //     Navigator.of(context).push(
+      //       MaterialPageRoute(
+      //         builder: (context) {
+      //           return const TabScreen();
+      //         },
+      //       ),
+      //     );
+      //   }
+      // }),
       body: PopScope(
         canPop: false,
         onPopInvoked: (bool didPop) {
