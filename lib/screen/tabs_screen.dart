@@ -7,6 +7,8 @@ import 'package:latest_meal_app_riverpod/screen/filter_screen.dart';
 import 'package:latest_meal_app_riverpod/screen/meals_screen.dart';
 import 'package:latest_meal_app_riverpod/widget/drawer_widget.dart';
 
+import '../providers/filters_provider.dart';
+
 
 const kInitialFilter = {
   Filter.glutenFree: false,
