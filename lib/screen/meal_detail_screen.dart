@@ -15,6 +15,9 @@ class MealDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // We have to add the ref as in the Consumer Which is stateLess Widget ref is not automatically passed
+    final favoriteMealProvider = ref.watch(favoriteMealsProvider);
+    final isFavoriteProviderResult = favoriteMealProvider.contains(meal);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -30,6 +33,7 @@ class MealDetailScreen extends ConsumerWidget {
               ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
+                  duration: const Duration(seconds: 1),
                   content: Center(
                     child: Text(
                       mealAddedInFavorite
@@ -40,8 +44,10 @@ class MealDetailScreen extends ConsumerWidget {
                 ),
               );
             },
-            icon: const Icon(
-              Icons.star,
+            icon: Icon(
+              isFavoriteProviderResult
+                  ? Icons.star
+                  : Icons.star_border_outlined,
             ),
           ),
         ],
