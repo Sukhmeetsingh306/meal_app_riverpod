@@ -5,11 +5,9 @@ class MealDetailScreen extends StatelessWidget {
   const MealDetailScreen({
     super.key,
     required this.meal,
-    required this.onToggleFav,
   });
 
   final MealModel meal;
-  final void Function(MealModel meal) onToggleFav;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +19,7 @@ class MealDetailScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              onToggleFav(meal);
+              // onToggleFav(meal);
             },
             icon: const Icon(
               Icons.star,
