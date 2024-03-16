@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latest_meal_app_riverpod/model/meals_model.dart';
+import 'package:latest_meal_app_riverpod/providers/favorite_provider.dart';
 
-class MealDetailScreen extends StatelessWidget {
+// as to change this as we have to add the toggle Method for the icons
+class MealDetailScreen extends ConsumerWidget {
   const MealDetailScreen({
     super.key,
     required this.meal,
@@ -10,7 +13,8 @@ class MealDetailScreen extends StatelessWidget {
   final MealModel meal;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // We have to add the ref as in the Consumer Which is stateLess Widget ref is not automatically passed
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -19,7 +23,22 @@ class MealDetailScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              // onToggleFav(meal);
+              // in the Change listener we do not use watch
+              final mealAddedInFavorite = ref
+                  .read(favoriteMealsProvider.notifier)
+                  .toggleMealFavoriteStatus(meal);
+              ScaffoldMessenger.of(context).clearSnackBars();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Center(
+                    child: Text(
+                      mealAddedInFavorite
+                          ? 'Meal Added In Favorites'
+                          : 'Meals Removed From Favorites',
+                    ),
+                  ),
+                ),
+              );
             },
             icon: const Icon(
               Icons.star,

@@ -7,17 +7,19 @@ class FavoriteMealsProviderNotifier extends StateNotifier<List<MealModel>> {
   FavoriteMealsProviderNotifier() : super([]);
 
 // in the provider add() & remove() is not allowed we have replace() it
-  void toggleMealFavoriteStatus(MealModel meal) {
+  bool toggleMealFavoriteStatus(MealModel meal) {
     final mealIsFavorite = state.contains(meal);
 
     if (mealIsFavorite) {
       state = state
           .where((mealIsPresentInList) => mealIsPresentInList.id != meal.id)
           .toList();
+          return false;
       // this is if a new meal is added to the List other meal is not replaced
     } else {
       // (...) this is spread operator
       state = [...state, meal];
+      return true;
     }
   }
 }

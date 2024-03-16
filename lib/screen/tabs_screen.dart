@@ -7,7 +7,6 @@ import 'package:latest_meal_app_riverpod/screen/filter_screen.dart';
 import 'package:latest_meal_app_riverpod/screen/meals_screen.dart';
 import 'package:latest_meal_app_riverpod/widget/drawer_widget.dart';
 
-import '../model/meals_model.dart';
 
 const kInitialFilter = {
   Filter.glutenFree: false,
@@ -28,18 +27,7 @@ class _TabScreenState extends ConsumerState<TabScreen> {
   // final List<MealModel> _favoriteMeals = [];
   Map<Filter, bool> _selectedFilter = kInitialFilter;
 
-  void _showMessage(String message) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Center(
-          child: Text(
-            message,
-          ),
-        ),
-      ),
-    );
-  }
+  
 
 /// this method was used before bringing in the provider
   // void toggleMealFavStatus(MealModel meal) {
